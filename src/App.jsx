@@ -1,3 +1,13 @@
+import MainContent from "./components/MainContent";
+import Sidebar from "./components/Sidebar";
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Projectify</h1>;
+  return (
+    <div className="bg-gray-900 text-white">
+      <div className="flex h-screen">
+        <Sidebar />
+        <MainContent />
+      </div>
+    </div>
+  );
 }
