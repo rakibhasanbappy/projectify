@@ -3,39 +3,39 @@ import { TaskContext } from "../context";
 import Sort from "../SvgComponents/Sort";
 import Task from "./Task";
 
-export default function Done() {
+export default function Revise() {
   const { tasks, dispatch } = useContext(TaskContext);
 
-  const doneTasks = tasks.filter((task) => task.category === "done");
+  const reviseTasks = tasks.filter((task) => task.category === "revised");
 
   function handleSortClick() {
     // sort the tasks based on date
-    const sortedTask = [...doneTasks].sort(function (a, b) {
+    const sortedTask = [...reviseTasks].sort(function (a, b) {
       return new Date(a.date) - new Date(b.date);
     });
 
     // update the state
     dispatch({
       type: "SORT_TASKS",
-      payload: { sortedTask, type: "done" },
+      payload: { sortedTask, type: "revised" },
     });
   }
 
   return (
     <div className="mb-4 w-full px-2 sm:w-1/2 md:w-1/4">
-      <div className="rounded-lg bg-teal-500 p-4">
+      <div className="rounded-lg bg-rose-500 p-4">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-lg font-semibold">{`Done (${doneTasks.length})`}</h3>
+          <h3 className="text-lg font-semibold">{`Revise (${reviseTasks.length})`}</h3>
           <a href="#" onClick={handleSortClick}>
             <Sort />
           </a>
         </div>
 
-        {doneTasks.length === 0 && (
+        {reviseTasks.length === 0 && (
           <p className="text-zinc-200">Task List is Empty!</p>
         )}
 
-        {doneTasks.map((task) => (
+        {reviseTasks.map((task) => (
           <Task key={task.id} task={task} />
         ))}
       </div>

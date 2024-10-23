@@ -2,17 +2,34 @@ import { useState } from "react";
 
 import Plus from "../SvgComponents/Plus";
 
+import { FormContext } from "../context";
 import AddTaskModal from "./AddTaskModal";
 import Done from "./Done";
 import OnProgress from "./OnProgress";
-import Revised from "./Revised";
+import Revise from "./Revise";
 import Todo from "./Todo";
 
 export default function Content() {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    id: crypto.randomUUID(),
+    title: "",
+    description: "",
+    date: "",
+    category: "todo",
+  });
 
   return (
-    <>
+    <FormContext.Provider
+      value={{
+        isEditing,
+        setIsEditing,
+        formData,
+        setFormData,
+        setShowAddTaskModal,
+      }}
+    >
       {showAddTaskModal ? (
         <AddTaskModal onCancelClick={setShowAddTaskModal} />
       ) : (
@@ -36,10 +53,10 @@ export default function Content() {
 
             <Done />
 
-            <Revised />
+            <Revise />
           </div>
         </div>
       )}
-    </>
+    </FormContext.Provider>
   );
 }
