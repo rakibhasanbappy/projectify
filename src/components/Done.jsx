@@ -20,17 +20,10 @@ export default function Done() {
   const doneTasks = searchedTasks.filter((task) => task.category === "done");
 
   function handleSortClick() {
-    // get the done tasks
-    const doneTasks = tasks.filter((task) => task.category === "done");
-    // sort the tasks based on date
-    const sortedTask = [...doneTasks].sort(function (a, b) {
-      return new Date(a.date) - new Date(b.date);
-    });
-
     // update the state
     dispatch({
       type: "SORT_TASKS",
-      payload: { sortedTask, type: "done" },
+      payload: { type: "done" },
     });
   }
 

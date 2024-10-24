@@ -21,15 +21,8 @@ export default function Todo() {
   const todoTasks = searchedTasks.filter((task) => task.category === "todo");
 
   function handleSortClick() {
-    // get the todo tasks
-    const todoTasks = tasks.filter((task) => task.category === "todo");
-    // sort the tasks based on date
-    const sortedTask = [...todoTasks].sort(function (a, b) {
-      return new Date(a.date) - new Date(b.date);
-    });
-
     // update the state
-    dispatch({ type: "SORT_TASKS", payload: { sortedTask, type: "todo" } });
+    dispatch({ type: "SORT_TASKS", payload: { type: "todo" } });
   }
 
   return (

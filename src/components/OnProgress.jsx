@@ -22,19 +22,10 @@ export default function OnProgress() {
   );
 
   function handleSortClick() {
-    // get the on progress tasks
-    const onProgressTasks = tasks.filter(
-      (task) => task.category === "inprogress"
-    );
-    // sort the tasks based on date
-    const sortedTask = [...onProgressTasks].sort(function (a, b) {
-      return new Date(a.date) - new Date(b.date);
-    });
-
     // update the state
     dispatch({
       type: "SORT_TASKS",
-      payload: { sortedTask, type: "inprogress" },
+      payload: { type: "inprogress" },
     });
   }
 

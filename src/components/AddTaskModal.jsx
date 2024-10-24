@@ -26,6 +26,7 @@ export default function AddTaskModal({ onCancelClick }) {
 
     if (isEditing) {
       dispatch({ type: "UPDATE_TASK", payload: formData });
+      toast.success("Task edited successfully");
       handleCancelClick();
       return;
     }

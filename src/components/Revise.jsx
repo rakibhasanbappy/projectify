@@ -22,17 +22,10 @@ export default function Revise() {
   );
 
   function handleSortClick() {
-    // get the revise tasks
-    const reviseTasks = tasks.filter((task) => task.category === "revised");
-    // sort the tasks based on date
-    const sortedTask = [...reviseTasks].sort(function (a, b) {
-      return new Date(a.date) - new Date(b.date);
-    });
-
     // update the state
     dispatch({
       type: "SORT_TASKS",
-      payload: { sortedTask, type: "revised" },
+      payload: { type: "revised" },
     });
   }
 

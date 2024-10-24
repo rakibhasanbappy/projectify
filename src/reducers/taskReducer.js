@@ -23,8 +23,14 @@ export default function taskReducer(tasks, action) {
         }
 
         case "SORT_TASKS":{
+            // get the specific type tasks
+            const filteredTasks = tasks.filter((task) => task.category === action.payload.type);
+            // sort the tasks based on date
+            const sortedTask = [...filteredTasks].sort(function (a, b) {
+                return new Date(a.date) - new Date(b.date);
+            });
             const newTasks = tasks.filter((task) => task.category !== action.payload.type);
-            newTasks.push(...action.payload.sortedTask);
+            newTasks.push(...sortedTask);
             return newTasks;
         }
         default:
