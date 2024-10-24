@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { SearchContext } from "../context";
 import HamburgerMenu from "../SvgComponents/HamburgerMenu";
 import Mail from "../SvgComponents/Mail";
 import Notification from "../SvgComponents/Notification";
 
 export default function Topbar() {
+  const { search, setSearch } = useContext(SearchContext);
+
   return (
     <header className="flex items-center justify-between bg-gray-800 p-4">
       <button className="lg:hidden">
@@ -12,6 +16,8 @@ export default function Topbar() {
         <input
           type="text"
           placeholder="Search here"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
           className="w-full max-w-xl rounded-full bg-gray-700 px-4 py-2 text-white focus:outline-none"
         />
       </div>

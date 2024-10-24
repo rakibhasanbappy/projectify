@@ -1,14 +1,27 @@
 import { useContext } from "react";
-import { TaskContext } from "../context";
+import { SearchContext, TaskContext } from "../context";
 import Sort from "../SvgComponents/Sort";
 import Task from "./Task";
 
 export default function Done() {
   const { tasks, dispatch } = useContext(TaskContext);
+  const { search } = useContext(SearchContext);
 
-  const doneTasks = tasks.filter((task) => task.category === "done");
+  let searchedTasks = tasks;
+
+  if (search.length > 0) {
+    searchedTasks = searchedTasks.filter((task) => {
+      return task.title.toLowerCase().includes(search.toLowerCase());
+    });
+  } else {
+    searchedTasks = tasks;
+  }
+
+  const doneTasks = searchedTasks.filter((task) => task.category === "done");
 
   function handleSortClick() {
+    // get the done tasks
+    const doneTasks = tasks.filter((task) => task.category === "done");
     // sort the tasks based on date
     const sortedTask = [...doneTasks].sort(function (a, b) {
       return new Date(a.date) - new Date(b.date);

@@ -1,16 +1,31 @@
 import { useContext } from "react";
-import { TaskContext } from "../context";
+import { SearchContext, TaskContext } from "../context";
 import Sort from "../SvgComponents/Sort";
 import Task from "./Task";
 
 export default function OnProgress() {
   const { tasks, dispatch } = useContext(TaskContext);
+  const { search } = useContext(SearchContext);
 
-  const onProgressTasks = tasks.filter(
+  let searchedTasks = tasks;
+
+  if (search.length > 0) {
+    searchedTasks = searchedTasks.filter((task) => {
+      return task.title.toLowerCase().includes(search.toLowerCase());
+    });
+  } else {
+    searchedTasks = tasks;
+  }
+
+  const onProgressTasks = searchedTasks.filter(
     (task) => task.category === "inprogress"
   );
 
   function handleSortClick() {
+    // get the on progress tasks
+    const onProgressTasks = tasks.filter(
+      (task) => task.category === "inprogress"
+    );
     // sort the tasks based on date
     const sortedTask = [...onProgressTasks].sort(function (a, b) {
       return new Date(a.date) - new Date(b.date);
