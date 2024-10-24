@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import Delete from "../SvgComponents/Delete";
 import Edit from "../SvgComponents/Edit";
 import { FormContext, TaskContext } from "../context";
@@ -11,6 +12,7 @@ export default function Task({ task }) {
 
   const handleDeleteClick = function () {
     dispatch({ type: "DELETE_TASK", payload: task.id });
+    toast.error("Task deleted successfully");
   };
 
   const handleEditClick = function () {

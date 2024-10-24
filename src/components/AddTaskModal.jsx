@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import { FormContext, TaskContext } from "../context";
 
 export default function AddTaskModal({ onCancelClick }) {
@@ -34,6 +35,7 @@ export default function AddTaskModal({ onCancelClick }) {
     };
 
     dispatch({ type: "ADD_TASK", payload: newTask });
+    toast.success("Task added successfully");
     handleCancelClick();
   };
 
