@@ -1,8 +1,30 @@
-# React + Vite
+# Project Manager - Projectify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Manager is a web application that allows users to create, update, and delete tasks. The application is built using React.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add task based on different categories
+- Update and delete tasks
+- Update task status
+- Sort tasks based on date
+- Search tasks based on title
+
+## Technologies
+
+- React
+- React Context API
+- Tailwind CSS
+
+## Setup
+
+To run this project, install it locally using npm:
+
+```bash
+$ npm install
+$ npm start
+```
+
+## Demo
+
+Live demo: [Project Manager](https://projectify-pro.vercel.app/)

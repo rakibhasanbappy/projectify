@@ -13,16 +13,15 @@ export default function AddTaskModal({ onCancelClick }) {
   };
 
   const handleAddTask = (e) => {
+    e.preventDefault();
     if (
-      formData.title === "" ||
-      formData.description === "" ||
+      formData.title.trim() === "" ||
+      formData.description.trim() === "" ||
       formData.date === ""
     ) {
       alert("Please fill all fields");
       return;
     }
-
-    e.preventDefault();
 
     if (isEditing) {
       dispatch({ type: "UPDATE_TASK", payload: formData });
